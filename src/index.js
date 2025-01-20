@@ -37,8 +37,8 @@ function onDeleteTodo(todoId){
     const choice = confirm(`Do you want to delete the task: ${todo.title} ?`);
     if(choice){
         model.deleteTodo(todoId);
-        alert(`Succesfully deleted task: ${todo.title}`);
         refreshTodos();
+        alert(`Succesfully deleted task: ${todo.title}`);
     }
     
 }
@@ -58,8 +58,8 @@ function onDeleteProject(projectId){
     const choice = confirm(`Do you want to delete the project: ${project.name} ?`);
     if(choice){
         model.deleteProject(projectId);
-        alert(`Succesfully deleted project: ${project.name}`);
         refreshPage();
+        alert(`Succesfully deleted project: ${project.name}`);
     }
 }
 

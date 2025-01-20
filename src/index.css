@@ -103,6 +103,10 @@ footer a:visited{
     justify-content: space-between;
 }
 
+.project-name{
+    width: 100%;
+}
+
 
 button:hover{
     background-color: darkgrey;

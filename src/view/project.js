@@ -3,6 +3,7 @@ import * as icons from './icons';
 function renderProject(project,isActive,onProjectChange,onDeleteProject){
     const li = document.createElement("li");
     const title = document.createElement("span");
+    title.classList.add("project-name");
     const span = document.createElement("span");
     span.innerText = project.name;
     const icon = icons.getArrow()
