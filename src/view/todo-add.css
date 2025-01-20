@@ -1,0 +1,55 @@
+.add-todo-form{
+    background-color: rgb(245, 245, 245);
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 32px;
+    font-family: Arial, Helvetica, sans-serif;
+
+    
+}
+
+.close-button{
+    align-self: flex-end;
+}
+
+.row{
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center;
+}
+
+.row.end{
+    justify-content: flex-end;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.row span{
+    display: flex;
+    gap: 16px;
+}
+
+input, textarea{
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+input[name="title"]{
+    width: 100%;
+}
+
+.add-button{
+    width: 20%;
+    padding: 8px;
+    align-self: center;
+}
+
+option,select{
+    font-size: large;
+}
