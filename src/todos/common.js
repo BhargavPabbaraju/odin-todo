@@ -1,9 +1,9 @@
 export const Priority = {
-    URGENT: 0,
-    HIGH : 1,
-    MEDIUM: 2,
-    LOW: 3,
-    UNASSIGNED: 4,
+    URGENT: "Urgent",
+    HIGH : "High",
+    MEDIUM: "Medium",
+    LOW: "Low",
+    UNASSIGNED: "Unassigned",
 }
 
 export const toggleCompleted = (obj) => {
