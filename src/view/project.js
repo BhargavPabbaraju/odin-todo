@@ -1,11 +1,11 @@
 function renderProjectList(projects, onProjectChange){
     const ul = document.createElement("ul");
     ul.classList.add("project-list");
-    projects.forEach((project, index)=>{
+    projects.forEach((project)=>{
         const li = document.createElement("li");
         li.innerText = project.name;
         li.addEventListener("click",()=>{
-           onProjectChange(index)
+           onProjectChange(project.id)
         })
         ul.appendChild(li);
     });

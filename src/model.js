@@ -1,12 +1,19 @@
 import { defaultProjects } from "./todos/project";
 export const model = {
     projects: defaultProjects,
-    activeProject: 0,
+    activeProject: null,
 
     getActiveProject(){
-        return this.projects[this.activeProject];
+        if(this.activeProject === null){
+            this.setActiveProject(this.projects[0].id);
+        }
+        return this.activeProject;
     },
-    setActiveProject(index){
-        this.activeProject = index;
+    setActiveProject(projectId){
+       this.activeProject = this.projects.find((project)=> project.id === projectId);
+    },
+    toggleTodoComplete(todoId){
+        const todo = this.getActiveProject().todos.find((todo)=>todo.id === todoId);
+        todo.toggleCompleted();
     }
 }

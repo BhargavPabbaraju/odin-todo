@@ -6,9 +6,3 @@ export const Priority = {
     UNASSIGNED: "Unassigned",
 }
 
-export const toggleCompleted = (obj) => {
-    if(!obj.comlpeted){
-        throw Exception("This object does not have a completed property");
-    }
-    obj.comlpeted = !obj.comlpeted;
-}

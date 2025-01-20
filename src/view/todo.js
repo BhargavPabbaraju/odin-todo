@@ -10,14 +10,18 @@ function renderPriorityChip(priority){
     return chip;
 }
 
-export function renderTodo(todo){
+export function renderTodo(todo, onToggleComplete){
     const li = document.createElement("li");
 
     const leftSide = document.createElement("div");
     
+    
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.checked = todo.completed;
+    checkbox.addEventListener("click", ()=>{
+        onToggleComplete(todo.id);
+    })
     
     const title = document.createElement("span");
     title.innerText = todo.title;
@@ -38,7 +42,11 @@ export function renderTodo(todo){
 
     rightSide.appendChild(dueDate);
     rightSide.appendChild(deleteIcon);
-    
+
+    if(todo.completed){
+        leftSide.classList.add("completed");
+        rightSide.classList.add("completed");
+    }
 
     li.appendChild(leftSide);
     li.appendChild(rightSide);
@@ -47,7 +55,7 @@ export function renderTodo(todo){
 
 }
 
-export function renderTodoList(project){
+export function renderTodoList(project, onToggleComplete){
     const content = document.getElementById("todos");
     content.replaceChildren();
     const ul = document.createElement("ul");
@@ -57,7 +65,7 @@ export function renderTodoList(project){
        new Date(a.dueDate) - new Date(b.dueDate)
     );
     todos.forEach((todo)=>{
-        ul.appendChild(renderTodo(todo));
+        ul.appendChild(renderTodo(todo,onToggleComplete));
     });
 
     content.appendChild(ul);

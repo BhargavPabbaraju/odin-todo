@@ -1,11 +1,14 @@
 import { Priority } from './common';
 import {Todo} from './todo';
 import { Checklist } from './checklist';
+import {v4 as uuidv4} from "uuid";
+
 
 export class Project{
     constructor(name, todos=[]){
         this.name = name;
         this.todos = todos;
+        this.id = uuidv4();
     }
 }
 

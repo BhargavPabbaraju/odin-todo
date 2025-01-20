@@ -4,10 +4,15 @@ import "./index.css";
 import { renderTodoList } from "./view/todo";
 
 
-function onProjectChange(index){
-    model.setActiveProject(index);
-    renderTodoList(model.getActiveProject());
+function onProjectChange(projectId){
+    model.setActiveProject(projectId);
+    renderTodoList(model.getActiveProject(), onToggleComplete);
+}
+
+function onToggleComplete(todoId){
+    model.toggleTodoComplete(todoId);
+    renderTodoList(model.getActiveProject(),onToggleComplete );
 }
 
 renderProjects(model.projects, onProjectChange);
-renderTodoList(model.getActiveProject());
+renderTodoList(model.getActiveProject(), onToggleComplete);

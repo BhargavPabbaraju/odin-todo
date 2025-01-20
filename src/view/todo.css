@@ -39,3 +39,7 @@ input[type="checkbox"]{
     height: 24px;
     accent-color: green;
 }
+
+.completed{
+    text-decoration: line-through;
+}

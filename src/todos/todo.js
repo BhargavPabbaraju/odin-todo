@@ -1,5 +1,5 @@
-import {Priority, toggleCompleted} from './common';
-
+import {Priority} from './common';
+import {v4 as uuidv4} from "uuid";
 
 export class Todo{
     constructor({title, 
@@ -9,6 +9,7 @@ export class Todo{
                 notes = "",
                 checklist = [],
             }){
+        this.id = uuidv4();
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
@@ -17,12 +18,16 @@ export class Todo{
         this.checklist = checklist;
         this.completed = false;
         this.expanded = false;
+
     }
 }
 
-const toggleExpanded = (todo)=>{
-    todo.expanded = !todo.expanded;
-}
 
-Object.assign(Todo.prototype, toggleCompleted);
-Object.assign(Todo.prototype, toggleExpanded);
+Object.assign(Todo.prototype, {
+    toggleCompleted(){
+        this.completed = !this.completed;
+    },
+    toggleExpanded(){
+        this.expanded = !this.expanded;
+    }
+});
