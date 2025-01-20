@@ -37,3 +37,23 @@ footer{
 li{
     list-style-type: none;
 }
+
+.priority-chip{
+    border: 1px solid grey;
+    border-radius: 4px;
+    padding: 2px 4px;
+}
+
+.low{
+    background-color: lightgreen;
+}
+.high{
+    background-color: lightcoral;
+}
+.medium{
+    background-color: #FFD580;
+}
+.urgent{
+    background-color: darkred;
+    color: white;
+}

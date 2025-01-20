@@ -7,7 +7,6 @@ export class Todo{
                 dueDate = new Date(),
                 priority = Priority.UNASSIGNED,
                 notes = "",
-                checklist = [],
             }){
         this.id = uuidv4();
         this.title = title;
@@ -15,7 +14,6 @@ export class Todo{
         this.dueDate = dueDate;
         this.priority = priority;
         this.notes = notes;
-        this.checklist = checklist;
         this.completed = false;
         this.expanded = false;
 

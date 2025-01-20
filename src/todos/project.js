@@ -1,6 +1,5 @@
 import { Priority } from './common';
 import {Todo} from './todo';
-import { Checklist } from './checklist';
 import {v4 as uuidv4} from "uuid";
 
 
@@ -21,10 +20,6 @@ export const defaultProjects = [
                 description: "Default task's description",
                 priority: Priority.LOW,
                 notes: "Some notes",
-                checklist: [
-                    new Checklist("Subtask 1"),
-                    new Checklist("Subtask 2"),
-                ]
             }),
             new Todo({
                 title: "Default task 2",
@@ -40,19 +35,11 @@ export const defaultProjects = [
                 description: "Start your journey as a Pokémon trainer by catching your first wild Pokémon.",
                 priority: Priority.HIGH,
                 notes: "Don't forget to stock up on Poké Balls and bring some Potions for emergencies.",
-                checklist: [
-                    new Checklist("Choose your starter Pokémon"),
-                    new Checklist("Visit Professor Oak's Lab"),
-                ]
             }),
             new Todo({
                 title: "Train Your Starter Pokémon",
                 description: "Strengthen your starter Pokémon by battling wild Pokémon in the tall grass.",
                 priority: Priority.MEDIUM,
-                checklist: [
-                    new Checklist("Battle 5 wild Pokémon"),
-                    new Checklist("Level up to 10"),
-                ],
             }),
             new Todo({
                 title: "Meet Legendary Trainer Red",

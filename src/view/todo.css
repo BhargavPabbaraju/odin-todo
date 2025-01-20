@@ -1,18 +1,4 @@
-.priority-chip{
-    border: 1px solid grey;
-    border-radius: 4px;
-    padding: 2px 4px;
-}
 
-.priority-chip.low{
-    background-color: lightgreen;
-}
-.priority-chip.high{
-    background-color: lightcoral;
-}
-.priority-chip.medium{
-    background-color: #FFD580;
-}
 
 .todo-list{
     display: flex;
@@ -42,4 +28,16 @@ input[type="checkbox"]{
 
 .completed{
     text-decoration: line-through;
+}
+
+.add-task{
+    align-self: center;
+    padding: 8px 16px;
+    margin-top: 64px;
+}
+
+#todos{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }

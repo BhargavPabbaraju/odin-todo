@@ -45,7 +45,7 @@ export function renderTodo(todo, onToggleComplete){
 
     if(todo.completed){
         leftSide.classList.add("completed");
-        rightSide.classList.add("completed");
+        dueDate.classList.add("completed");
     }
 
     li.appendChild(leftSide);
@@ -55,7 +55,7 @@ export function renderTodo(todo, onToggleComplete){
 
 }
 
-export function renderTodoList(project, onToggleComplete){
+export function renderTodoList(project, onToggleComplete, onAddTodo){
     const content = document.getElementById("todos");
     content.replaceChildren();
     const ul = document.createElement("ul");
@@ -69,4 +69,11 @@ export function renderTodoList(project, onToggleComplete){
     });
 
     content.appendChild(ul);
+
+    const addButton = document.createElement("button");
+    addButton.innerText = "Add task";
+    addButton.classList.add("add-task");
+    addButton.addEventListener("click",onAddTodo);
+
+    content.appendChild(addButton);
 }
