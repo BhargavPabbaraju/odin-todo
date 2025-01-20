@@ -16,7 +16,13 @@ export class Todo{
         this.notes = notes;
         this.checklist = checklist;
         this.completed = false;
+        this.expanded = false;
     }
 }
 
+const toggleExpanded = (todo)=>{
+    todo.expanded = !todo.expanded;
+}
+
 Object.assign(Todo.prototype, toggleCompleted);
+Object.assign(Todo.prototype, toggleExpanded);

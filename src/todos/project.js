@@ -14,7 +14,7 @@ export const defaultProjects = [
         "Default Project",
         [
             new Todo({
-                title: "Default task",
+                title: "Default task 1",
                 description: "Default task's description",
                 priority: Priority.LOW,
                 notes: "Some notes",
@@ -22,6 +22,10 @@ export const defaultProjects = [
                     new Checklist("Subtask 1"),
                     new Checklist("Subtask 2"),
                 ]
+            }),
+            new Todo({
+                title: "Default task 2",
+                priority: Priority.MEDIUM,
             })
         ]
     ),
@@ -37,7 +41,27 @@ export const defaultProjects = [
                     new Checklist("Choose your starter Pokémon"),
                     new Checklist("Visit Professor Oak's Lab"),
                 ]
-            })
+            }),
+            new Todo({
+                title: "Train Your Starter Pokémon",
+                description: "Strengthen your starter Pokémon by battling wild Pokémon in the tall grass.",
+                priority: Priority.MEDIUM,
+                checklist: [
+                    new Checklist("Battle 5 wild Pokémon"),
+                    new Checklist("Level up to 10"),
+                ],
+            }),
+            new Todo({
+                title: "Meet Legendary Trainer Red",
+                description: "Learn valuable tips from one of the best Pokémon trainers in history.",
+                priority: Priority.LOW,
+                notes: "Red is often found at Mt. Silver. Be prepared for a tough challenge someday.",
+            }),
+            new Todo({
+                title: "Explore Viridian Forest",
+                description: "Search for rare Pokémon and collect useful items during your exploration.",
+                priority: Priority.MEDIUM,
+            }),
         ]
     )
     
