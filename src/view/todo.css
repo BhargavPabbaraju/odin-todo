@@ -11,6 +11,8 @@
     justify-content: space-between;
     padding: 8px;
     align-items: center;
+    background-color: lightgrey;
+    color:black;
 }
 
 .todo-list li div{
@@ -42,3 +44,8 @@ input[type="checkbox"]{
     gap: 16px;
 }
 
+#todos li:nth-child(even){
+    background-color: darkgrey;
+    color:black;
+
+}

@@ -67,7 +67,7 @@ function renderPriority(){
         }
         const option = document.createElement("option");
         option.classList.add(priorityLabel[0].toLowerCase()+priorityLabel.substring(1));
-        option.value = priority;
+        option.value = priorityLabel;
         option.innerText = priorityLabel;
         input.appendChild(option);
     });
