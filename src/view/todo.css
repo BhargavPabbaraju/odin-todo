@@ -1,0 +1,41 @@
+.priority-chip{
+    border: 1px solid grey;
+    border-radius: 4px;
+    padding: 2px 4px;
+}
+
+.priority-chip.low{
+    background-color: lightgreen;
+}
+.priority-chip.high{
+    background-color: lightcoral;
+}
+.priority-chip.medium{
+    background-color: #FFD580;
+}
+
+.todo-list{
+    display: flex;
+    flex-direction: column;
+}
+
+.todo-list li{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 8px;
+    align-items: center;
+}
+
+.todo-list li div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+}
+
+input[type="checkbox"]{
+    width: 24px;
+    height: 24px;
+    accent-color: green;
+}

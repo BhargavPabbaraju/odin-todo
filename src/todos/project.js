@@ -56,6 +56,7 @@ export const defaultProjects = [
                 description: "Learn valuable tips from one of the best Pokémon trainers in history.",
                 priority: Priority.LOW,
                 notes: "Red is often found at Mt. Silver. Be prepared for a tough challenge someday.",
+                dueDate: new Date("12/31/1999"),
             }),
             new Todo({
                 title: "Explore Viridian Forest",

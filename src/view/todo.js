@@ -1,10 +1,11 @@
 import { format } from "date-fns";
 import * as icons from "./icons";
+import "./todo.css";
 
 function renderPriorityChip(priority){
     const chip = document.createElement("span");
     chip.classList.add("priority-chip");
-    chip.classList.add(priority);
+    chip.classList.add(priority[0].toLowerCase()+priority.substring(1));
     chip.innerText = priority;
     return chip;
 }
@@ -31,7 +32,7 @@ export function renderTodo(todo){
 
     const rightSide = document.createElement("div");
     const dueDate = document.createElement("span");
-    dueDate.innerText = format(todo.dueDate, "MM dd yyyy");
+    dueDate.innerText = "Due " + format(todo.dueDate, "MMM dd yyyy");
     
     const deleteIcon = icons.getTrashCan();
 
@@ -47,10 +48,17 @@ export function renderTodo(todo){
 }
 
 export function renderTodoList(project){
+    const content = document.getElementById("todos");
+    content.replaceChildren();
     const ul = document.createElement("ul");
     ul.classList.add("todo-list");
-    project.todos.forEach((todo)=>{
+
+    const todos = project.todos.slice().sort((a,b)=>
+       new Date(a.dueDate) - new Date(b.dueDate)
+    );
+    todos.forEach((todo)=>{
         ul.appendChild(renderTodo(todo));
     });
-    return ul;
+
+    content.appendChild(ul);
 }

@@ -1,5 +1,3 @@
-import {renderTodoList} from './todo';
-
 function renderProjectList(projects, onProjectChange){
     const ul = document.createElement("ul");
     ul.classList.add("project-list");
@@ -15,13 +13,10 @@ function renderProjectList(projects, onProjectChange){
 }
 
 
-export function renderProjects({projects, activeProject}, onProjectChange){
-    const content = document.getElementById("content");
+export function renderProjects(projects,onProjectChange){
+    const content = document.getElementById("projects");
     content.replaceChildren();
     
     const projectList = renderProjectList(projects, onProjectChange);
     content.appendChild(projectList);
-
-    const todoList = renderTodoList(activeProject);
-    content.appendChild(todoList);
 }

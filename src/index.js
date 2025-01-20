@@ -1,10 +1,13 @@
 import { model } from "./model";
 import { renderProjects } from "./view/project";
 import "./index.css";
+import { renderTodoList } from "./view/todo";
 
 
 function onProjectChange(index){
-    renderProjects({projects: model.projects,activeProject: model.projects[index]}, onProjectChange);
+    model.setActiveProject(index);
+    renderTodoList(model.getActiveProject());
 }
 
-renderProjects({projects: model.projects,activeProject: model.projects[0]}, onProjectChange);
+renderProjects(model.projects, onProjectChange);
+renderTodoList(model.getActiveProject());

@@ -33,3 +33,7 @@ footer{
     grid-template-columns: 1fr 4fr;
     height: 90vh;
 }
+
+li{
+    list-style-type: none;
+}
