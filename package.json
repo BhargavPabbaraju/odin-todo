@@ -8,11 +8,12 @@
     "webpack-dev-server": "^5.2.0",
     "webpack-merge": "^6.0.1"
   },
-
-  "scripts":{
+  "scripts": {
     "build": "webpack --config webpack.prod.js",
     "dev": "webpack serve --open --config webpack.dev.js",
     "deploy": "git subtree push --prefix dist origin gh-pages"
-
+  },
+  "dependencies": {
+    "date-fns": "^4.1.0"
   }
 }
