@@ -1,14 +1,23 @@
 import * as icons from './icons';
 
-function renderProject(project,isActive,onProjectChange){
+function renderProject(project,isActive,onProjectChange,onDeleteProject){
     const li = document.createElement("li");
+    const title = document.createElement("span");
     const span = document.createElement("span");
     span.innerText = project.name;
     const icon = icons.getArrow()
-    li.appendChild(icon);
     
-    li.appendChild(span);
-    li.addEventListener("click",()=>{
+    title.appendChild(icon);
+    title.appendChild(span);
+    li.appendChild(title);
+
+    const deleteIcon = icons.getTrashCan();
+    deleteIcon.addEventListener("click",()=>{
+        onDeleteProject(project.id);
+    });
+    li.appendChild(deleteIcon);
+    
+    title.addEventListener("click",()=>{
         onProjectChange(project.id)
     });
 
@@ -21,13 +30,18 @@ function renderProject(project,isActive,onProjectChange){
 }
 
 
-function renderProjectList(projects,activeProject, onProjectChange){
+function renderProjectList(projects,activeProject, onProjectChange, onDeleteProject){
     const ul = document.createElement("ul");
     ul.classList.add("project-list");
     projects.forEach((project)=>{
         const isActive = project.id === activeProject.id;
-        ul.appendChild(renderProject(project,isActive,onProjectChange));
+        ul.appendChild(renderProject(project,isActive,onProjectChange,onDeleteProject));
     });
+    if(projects.length === 0){
+        const li = document.createElement("li");
+        li.innerText = "No projects";
+        ul.appendChild(li);
+    }
     return ul;
 }
 
@@ -61,11 +75,11 @@ function renderAddProject(onAddProject){
 }
 
 
-export function renderProjects(projects,activeProject,onProjectChange, onAddProject){
+export function renderProjects(projects,activeProject,onProjectChange, onAddProject, onDeleteProject){
     const content = document.getElementById("projects");
     content.replaceChildren();
     
-    const projectList = renderProjectList(projects,activeProject, onProjectChange);
+    const projectList = renderProjectList(projects,activeProject, onProjectChange, onDeleteProject);
     content.appendChild(projectList);
 
     content.appendChild(renderAddProject(onAddProject));

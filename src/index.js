@@ -23,6 +23,11 @@ function onAddTodo(){
     });
 }
 
+function onCloseAddTodo(){
+    refreshTodos();
+}
+
+
 function onDeleteTodo(todoId){
     const todo = model.getTodo(todoId);
     if(!todo){
@@ -32,24 +37,35 @@ function onDeleteTodo(todoId){
     const choice = confirm(`Do you want to delete the task: ${todo.title} ?`);
     if(choice){
         model.deleteTodo(todoId);
-        alert(`Succesfully deleted ${todo.title}`);
+        alert(`Succesfully deleted task: ${todo.title}`);
         refreshTodos();
     }
     
 }
 
-function onCloseAddTodo(){
-    refreshTodos();
-}
 
 function onAddProject(name){
     model.addProject(name);
     refreshPage();
 }
 
+function onDeleteProject(projectId){
+    const project = model.getProject(projectId);
+    if(!project){
+        alert("Error while fetching project to delete");
+        return;
+    }
+    const choice = confirm(`Do you want to delete the project: ${project.name} ?`);
+    if(choice){
+        model.deleteProject(projectId);
+        alert(`Succesfully deleted project: ${project.name}`);
+        refreshPage();
+    }
+}
+
 
 function refreshProjects(){
-    renderProjects(model.projects,model.getActiveProject(),  onProjectChange, onAddProject);
+    renderProjects(model.projects,model.getActiveProject(),  onProjectChange, onAddProject, onDeleteProject);
 }
 
 function refreshTodos(){
@@ -57,6 +73,7 @@ function refreshTodos(){
 }
 
 function refreshPage(){
+    console.log(model.getActiveProject());
     refreshProjects();
     refreshTodos();
 }

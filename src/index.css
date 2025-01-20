@@ -73,6 +73,13 @@ li{
 #projects li{
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+}
+
+#projects li span{
+    display: flex;
+    align-items: center;
 }
 
 footer a{

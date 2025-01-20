@@ -64,16 +64,16 @@ export function renderTodoList(project, onToggleComplete, onAddTodo, onDeleteTod
     const ul = document.createElement("ul");
     ul.classList.add("todo-list");
 
-    const todos = project.todos.slice().sort((a,b)=>
+    const todos = project?.todos.slice().sort((a,b)=>
        new Date(a.dueDate) - new Date(b.dueDate)
-    );
+    ) || [];
     todos.forEach((todo)=>{
         ul.appendChild(renderTodo(todo,onToggleComplete, onDeleteTodo, onUpdateTodo));
     });
 
     if(todos.length === 0){
         const li = document.createElement("li");
-        li.innerText = "No tasks added yet";
+        li.innerText = "No tasks";
         ul.appendChild(li);
     }
 

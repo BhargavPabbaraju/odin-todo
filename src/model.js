@@ -4,7 +4,7 @@ export const model = {
     activeProject: null,
 
     getActiveProject(){
-        if(this.activeProject === null){
+        if(this.activeProject === null && this.projects.length > 0){
             this.setActiveProject(this.projects[0].id);
         }
         return this.activeProject;
@@ -29,6 +29,15 @@ export const model = {
         const project = new Project(name);
         this.projects.push(project);
         this.setActiveProject(project.id);
+    },
+    getProject(projectId){
+        return this.projects.find((project)=>project.id === projectId);
+    },
+    deleteProject(projectId){
+        this.projects = this.projects.filter((project)=>project.id !== projectId);
+        if(projectId === this.activeProject?.id){
+            this.activeProject = this.projects.length > 0 ? this.projects[0] : null;
+        }
     }
 
 }
