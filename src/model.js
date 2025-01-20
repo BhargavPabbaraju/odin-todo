@@ -14,7 +14,17 @@ export const model = {
     },
     toggleTodoComplete(todoId){
         const todo = this.getActiveProject().todos.find((todo)=>todo.id === todoId);
-        todo.toggleCompleted();
+        todo?.toggleCompleted();
+        if(!todo){
+            throw Exception("Invalid todo id");
+        }
+    },
+    toggleTodoExpand(todoId){
+        const todo = this.getActiveProject().todos.find((todo)=>todo.id === todoId);
+        todo?.toggleExpanded();
+        if(!todo){
+            throw Exception("Invalid todo id");
+        }
     },
     addTodo(todo){
         this.getActiveProject().addTodo(todo);

@@ -16,6 +16,11 @@ function onToggleComplete(todoId){
     refreshTodos();
 }
 
+function onToggleExpand(todoId){
+    model.toggleTodoExpand(todoId);
+    refreshTodos();
+}
+
 function onAddTodo(){
     renderAddTodoForm(model.getActiveProject().name,onCloseAddTodo,(todo)=>{
         model.addTodo(todo);
@@ -69,7 +74,7 @@ function refreshProjects(){
 }
 
 function refreshTodos(){
-    renderTodoList(model.getActiveProject(), onToggleComplete, onAddTodo, onDeleteTodo);
+    renderTodoList(model.getActiveProject(), onToggleComplete, onAddTodo, onDeleteTodo,onToggleExpand);
 }
 
 function refreshPage(){

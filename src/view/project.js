@@ -6,7 +6,7 @@ function renderProject(project,isActive,onProjectChange,onDeleteProject){
     title.classList.add("project-name");
     const span = document.createElement("span");
     span.innerText = project.name;
-    const icon = icons.getArrow()
+    const icon = icons.getRightArrow()
     
     title.appendChild(icon);
     title.appendChild(span);

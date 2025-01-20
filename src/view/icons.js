@@ -13,10 +13,26 @@ export function getCross(){
     return span;
 }
 
-export function getArrow(){
+export function getRightArrow(){
     const span = document.createElement("span");
     span.classList.add("material-symbols-outlined");
+    span.classList.add("purple-icon");
     span.innerText = "keyboard_double_arrow_right";
-    span.style.color = "rebeccapurple";
+    return span;
+}
+
+export function getDownArrow(){
+    const span = document.createElement("span");
+    span.classList.add("material-symbols-outlined");
+    span.classList.add("purple-icon");
+    span.innerText = "keyboard_arrow_down";
+    return span;
+}
+
+export function getUpArrow(){
+    const span = document.createElement("span");
+    span.classList.add("material-symbols-outlined");
+    span.classList.add("purple-icon");
+    span.innerText = "keyboard_arrow_up";
     return span;
 }

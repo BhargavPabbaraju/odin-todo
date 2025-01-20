@@ -10,9 +10,30 @@ function renderPriorityChip(priority){
     return chip;
 }
 
-export function renderTodo(todo, onToggleComplete, onDeleteTodo, onUpdateTodo){
-    const li = document.createElement("li");
+function renderTodoDetail(key,value){
+    const row = document.createElement("div");
+    row.classList.add("column");
+    const label = document.createElement("div");
+    label.innerText = key;
 
+    const data = document.createElement("div");
+    data.innerText = value;
+    row.append(label);
+    row.append(data);
+    return row;
+}
+
+function renderTodoDetails(todo){
+    return [
+        renderTodoDetail("Description:",todo.description),
+        renderTodoDetail("Notes:",todo.notes),
+    ]
+}
+
+export function renderTodo(todo, onToggleComplete, onDeleteTodo, onToggleExpand, onUpdateTodo){
+    const li = document.createElement("li");
+    const row = document.createElement("div");
+    row.classList.add("row");
     const leftSide = document.createElement("div");
     
     
@@ -32,7 +53,11 @@ export function renderTodo(todo, onToggleComplete, onDeleteTodo, onUpdateTodo){
     leftSide.appendChild(title);
     leftSide.appendChild(chip);
 
-    // const viewIcon = renderViewIcon(todo);
+    const showIcon = todo.expanded ? icons.getUpArrow() : icons.getDownArrow();
+    showIcon.addEventListener("click",()=>{
+        onToggleExpand(todo.id);
+    });
+    leftSide.appendChild(showIcon);
 
     const rightSide = document.createElement("div");
     const dueDate = document.createElement("span");
@@ -51,14 +76,23 @@ export function renderTodo(todo, onToggleComplete, onDeleteTodo, onUpdateTodo){
         dueDate.classList.add("completed");
     }
 
-    li.appendChild(leftSide);
-    li.appendChild(rightSide);
+    row.appendChild(leftSide);
+    row.appendChild(rightSide);
+    li.appendChild(row);
+
+    if(todo.expanded){
+        const rows = renderTodoDetails(todo);
+        rows.forEach((row)=>{
+            li.appendChild(row);
+        })
+        
+    }
 
     return li;
 
 }
 
-export function renderTodoList(project, onToggleComplete, onAddTodo, onDeleteTodo,onUpdateTodo){
+export function renderTodoList(project, onToggleComplete, onAddTodo, onDeleteTodo,onToggleExpand,onUpdateTodo){
     const content = document.getElementById("todos");
     content.replaceChildren();
     const ul = document.createElement("ul");
@@ -68,7 +102,7 @@ export function renderTodoList(project, onToggleComplete, onAddTodo, onDeleteTod
        new Date(a.dueDate) - new Date(b.dueDate)
     ) || [];
     todos.forEach((todo)=>{
-        ul.appendChild(renderTodo(todo,onToggleComplete, onDeleteTodo, onUpdateTodo));
+        ul.appendChild(renderTodo(todo,onToggleComplete, onDeleteTodo, onToggleExpand, onUpdateTodo));
     });
 
     if(todos.length === 0){

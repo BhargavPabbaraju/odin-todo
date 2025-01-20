@@ -111,3 +111,7 @@ footer a:visited{
 button:hover{
     background-color: darkgrey;
 }
+
+.purple-icon{
+    color: rebeccapurple;
+}
