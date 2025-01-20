@@ -10,6 +10,7 @@ body{
 
 ul{
     margin: 0;
+    padding: 0;
 }
 
 header{
@@ -33,8 +34,9 @@ footer{
 
 #content{
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 3fr;
     height: 80vh;
+    gap: 24px;
 }
 
 li{
@@ -68,9 +70,9 @@ li{
     gap: 16px;
 }
 
-#projects li::before{
-    content: "# ";
-    color: rebeccapurple;
+#projects li{
+    display: flex;
+    align-items: center;
 }
 
 footer a{
@@ -79,4 +81,22 @@ footer a{
 
 footer a:visited{
     color: white;
+}
+
+#projects{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 8px;
+}
+
+#projects form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+button:hover{
+    background-color: darkgrey;
 }

@@ -1,4 +1,4 @@
-import { defaultProjects } from "./todos/project";
+import { defaultProjects, Project } from "./todos/project";
 export const model = {
     projects: defaultProjects,
     activeProject: null,
@@ -18,5 +18,10 @@ export const model = {
     },
     addTodo(todo){
         this.getActiveProject().addTodo(todo);
+    },
+    addProject(name){
+        const project = new Project(name);
+        this.projects.push(project);
+        this.setActiveProject(project.id);
     }
 }

@@ -26,5 +26,12 @@ function onCloseAddTodo(){
     renderTodoList(model.getActiveProject(), onToggleComplete, onAddTodo);
 }
 
-renderProjects(model.projects, onProjectChange);
+function onAddProject(name){
+    model.addProject(name);
+    renderProjects(model.projects, onProjectChange, onAddProject);
+    renderTodoList(model.getActiveProject(), onToggleComplete, onAddTodo);
+}
+
+
+renderProjects(model.projects, onProjectChange, onAddProject);
 renderTodoList(model.getActiveProject(), onToggleComplete, onAddTodo);

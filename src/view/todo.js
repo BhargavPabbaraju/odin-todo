@@ -68,6 +68,12 @@ export function renderTodoList(project, onToggleComplete, onAddTodo){
         ul.appendChild(renderTodo(todo,onToggleComplete));
     });
 
+    if(todos.length === 0){
+        const li = document.createElement("li");
+        li.innerText = "No tasks added yet";
+        ul.appendChild(li);
+    }
+
     content.appendChild(ul);
 
     const addButton = document.createElement("button");
