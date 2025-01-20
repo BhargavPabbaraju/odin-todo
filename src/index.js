@@ -7,6 +7,7 @@ import { renderAddTodoForm } from "./view/todo-add";
 
 function onProjectChange(projectId){
     model.setActiveProject(projectId);
+    renderProjects(model.projects,model.getActiveProject(), onProjectChange, onAddProject);
     renderTodoList(model.getActiveProject(), onToggleComplete, onAddTodo);
 }
 
@@ -28,10 +29,10 @@ function onCloseAddTodo(){
 
 function onAddProject(name){
     model.addProject(name);
-    renderProjects(model.projects, onProjectChange, onAddProject);
+    renderProjects(model.projects,model.getActiveProject(), onProjectChange, onAddProject);
     renderTodoList(model.getActiveProject(), onToggleComplete, onAddTodo);
 }
 
 
-renderProjects(model.projects, onProjectChange, onAddProject);
+renderProjects(model.projects,model.getActiveProject(),  onProjectChange, onAddProject);
 renderTodoList(model.getActiveProject(), onToggleComplete, onAddTodo);

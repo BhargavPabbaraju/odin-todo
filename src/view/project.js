@@ -1,17 +1,32 @@
 import * as icons from './icons';
-function renderProjectList(projects, onProjectChange){
+
+function renderProject(project,isActive,onProjectChange){
+    const li = document.createElement("li");
+    const span = document.createElement("span");
+    span.innerText = project.name;
+    const icon = icons.getArrow()
+    li.appendChild(icon);
+    
+    li.appendChild(span);
+    li.addEventListener("click",()=>{
+        onProjectChange(project.id)
+    });
+
+    if(isActive){
+        icon.style.color = "white";
+        li.style.background = "rebeccapurple";
+    }
+
+    return li;
+}
+
+
+function renderProjectList(projects,activeProject, onProjectChange){
     const ul = document.createElement("ul");
     ul.classList.add("project-list");
     projects.forEach((project)=>{
-        const li = document.createElement("li");
-        const span = document.createElement("span");
-        span.innerText = project.name;
-        li.appendChild(icons.getArrow());
-        li.appendChild(span);
-        li.addEventListener("click",()=>{
-           onProjectChange(project.id)
-        })
-        ul.appendChild(li);
+        const isActive = project.id === activeProject.id;
+        ul.appendChild(renderProject(project,isActive,onProjectChange));
     });
     return ul;
 }
@@ -46,11 +61,11 @@ function renderAddProject(onAddProject){
 }
 
 
-export function renderProjects(projects,onProjectChange, onAddProject){
+export function renderProjects(projects,activeProject,onProjectChange, onAddProject){
     const content = document.getElementById("projects");
     content.replaceChildren();
     
-    const projectList = renderProjectList(projects, onProjectChange);
+    const projectList = renderProjectList(projects,activeProject, onProjectChange);
     content.appendChild(projectList);
 
     content.appendChild(renderAddProject(onAddProject));
