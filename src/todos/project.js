@@ -14,6 +14,12 @@ export class Project{
 Object.assign(Project.prototype,{
     addTodo(todo){
         this.todos.push(new Todo(todo));
+    },
+    getTodo(todoId){
+        return this.todos.find((todo)=>todo.id === todoId);
+    },
+    deleteTodo(todoId){
+        this.todos = this.todos.filter((todo)=> todo.id !== todoId);
     }
 });
 

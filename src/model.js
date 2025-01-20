@@ -19,9 +19,16 @@ export const model = {
     addTodo(todo){
         this.getActiveProject().addTodo(todo);
     },
+    getTodo(todoId){
+        return this.getActiveProject().getTodo(todoId);
+    },
+    deleteTodo(todoId){
+        this.getActiveProject().deleteTodo(todoId);
+    },
     addProject(name){
         const project = new Project(name);
         this.projects.push(project);
         this.setActiveProject(project.id);
     }
+
 }

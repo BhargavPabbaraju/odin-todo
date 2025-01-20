@@ -10,7 +10,7 @@ function renderPriorityChip(priority){
     return chip;
 }
 
-export function renderTodo(todo, onToggleComplete){
+export function renderTodo(todo, onToggleComplete, onDeleteTodo, onUpdateTodo){
     const li = document.createElement("li");
 
     const leftSide = document.createElement("div");
@@ -39,6 +39,9 @@ export function renderTodo(todo, onToggleComplete){
     dueDate.innerText = "Due " + format(todo.dueDate, "MMM dd yyyy");
     
     const deleteIcon = icons.getTrashCan();
+    deleteIcon.addEventListener("click",()=>{
+        onDeleteTodo(todo.id);
+    })
 
     rightSide.appendChild(dueDate);
     rightSide.appendChild(deleteIcon);
@@ -55,7 +58,7 @@ export function renderTodo(todo, onToggleComplete){
 
 }
 
-export function renderTodoList(project, onToggleComplete, onAddTodo){
+export function renderTodoList(project, onToggleComplete, onAddTodo, onDeleteTodo,onUpdateTodo){
     const content = document.getElementById("todos");
     content.replaceChildren();
     const ul = document.createElement("ul");
@@ -65,7 +68,7 @@ export function renderTodoList(project, onToggleComplete, onAddTodo){
        new Date(a.dueDate) - new Date(b.dueDate)
     );
     todos.forEach((todo)=>{
-        ul.appendChild(renderTodo(todo,onToggleComplete));
+        ul.appendChild(renderTodo(todo,onToggleComplete, onDeleteTodo, onUpdateTodo));
     });
 
     if(todos.length === 0){
