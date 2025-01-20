@@ -1,15 +1,12 @@
 import { Priority } from '../todos/common';
 import * as icons from './icons';
 import './todo-add.css';
+import { isValid } from 'date-fns';
 
 function renderCloseButton(onClose){
-    const div = document.createElement("div");
-    div.classList.add("row");
-    div.classList.add("end");
     const button = icons.getCross();
     button.addEventListener("click",onClose);
-    div.appendChild(button);
-    return div;
+    return button;
 }
 
 
@@ -117,17 +114,34 @@ function renderNotes(){
     return div;
 }
 
-function renderAddButton(){
+function renderAddButton(addTodo){
     const input = document.createElement("input");
     input.classList.add("add-button");
     input.type = "submit";
     input.value = "Add";
+    input.addEventListener("click",(e)=>{
+        if(!e.target.form.checkValidity()){
+            return;
+        }
+        else{
+            e.preventDefault();
+            const form = e.target.form;
+            addTodo({
+                title: form.title.value,
+                description: form.description.value,
+                dueDate: isValid(new Date(form["due-date"].value))? new Date(form["due-date"].value): null,
+                priority: form.priority.value || Priority.UNASSIGNED,
+                notes: form.notes.value,
+
+            });
+        }
+    });
     return input;
 }
 
 
 
-export function renderAddTodoForm(onCloseAddTodo){
+export function renderAddTodoForm(projectName, onCloseAddTodo, addTodo){
     const content = document.getElementById("todos");
     content.replaceChildren();
 
@@ -135,7 +149,14 @@ export function renderAddTodoForm(onCloseAddTodo){
     form.method = "post";
     form.classList.add("add-todo-form");
 
-    form.appendChild(renderCloseButton(onCloseAddTodo));
+    const topRow = document.createElement("div");
+    topRow.classList.add("row");
+    const h3 = document.createElement("h3");
+    h3.innerText = projectName;
+    topRow.appendChild(h3);
+    topRow.appendChild(renderCloseButton(onCloseAddTodo));
+    form.appendChild(topRow);
+
     form.appendChild(renderTodoTitle());
     form.appendChild(renderDescription());
     const div = document.createElement("div");
@@ -144,7 +165,7 @@ export function renderAddTodoForm(onCloseAddTodo){
     div.appendChild(renderDueDate());
     form.appendChild(div);
     form.appendChild(renderNotes());
-    form.appendChild(renderAddButton());
+    form.appendChild(renderAddButton(addTodo));
     
     content.appendChild(form);
 

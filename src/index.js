@@ -16,7 +16,10 @@ function onToggleComplete(todoId){
 }
 
 function onAddTodo(){
-    renderAddTodoForm(onCloseAddTodo);
+    renderAddTodoForm(model.getActiveProject().name,onCloseAddTodo,(todo)=>{
+        model.addTodo(todo);
+        renderTodoList(model.getActiveProject(), onToggleComplete, onAddTodo);
+    });
 }
 
 function onCloseAddTodo(){

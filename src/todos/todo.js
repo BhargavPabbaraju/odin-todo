@@ -11,7 +11,7 @@ export class Todo{
         this.id = uuidv4();
         this.title = title;
         this.description = description;
-        this.dueDate = dueDate;
+        this.dueDate = dueDate || new Date();
         this.priority = priority;
         this.notes = notes;
         this.completed = false;

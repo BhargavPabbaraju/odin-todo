@@ -15,5 +15,8 @@ export const model = {
     toggleTodoComplete(todoId){
         const todo = this.getActiveProject().todos.find((todo)=>todo.id === todoId);
         todo.toggleCompleted();
+    },
+    addTodo(todo){
+        this.getActiveProject().addTodo(todo);
     }
 }

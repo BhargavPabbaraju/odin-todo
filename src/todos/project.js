@@ -11,6 +11,12 @@ export class Project{
     }
 }
 
+Object.assign(Project.prototype,{
+    addTodo(todo){
+        this.todos.push(new Todo(todo));
+    }
+});
+
 export const defaultProjects = [
     new Project(
         "Default Project",

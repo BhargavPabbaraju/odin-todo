@@ -20,9 +20,6 @@
     align-items: center;
 }
 
-.row.end{
-    justify-content: flex-end;
-}
 
 .column{
     display: flex;
@@ -44,6 +41,10 @@ input[name="title"]{
     width: 100%;
 }
 
+input[name="title"]:invalid{
+    border: 1px solid red;
+}
+
 .add-button{
     width: 20%;
     padding: 8px;
@@ -52,4 +53,9 @@ input[name="title"]{
 
 option,select{
     font-size: large;
+}
+
+label[for="title"]::after{
+    content:"*";
+    color: red;
 }
