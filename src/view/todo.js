@@ -58,8 +58,8 @@ export function renderTodo(todo, onToggleComplete, onDeleteTodo, onToggleExpand,
         onToggleExpand(todo.id);
     });
     leftSide.appendChild(showIcon);
-    showIcon.setAttribute("aria-label","Show details");
-    showIcon.setAttribute("title","Show details");
+    showIcon.setAttribute("aria-label", `${todo.expanded ?  "Hide" :"Show"} details`);
+    showIcon.setAttribute("title",`${todo.expanded ?  "Hide" :"Show"} details`);
     
     const rightSide = document.createElement("div");
     const dueDate = document.createElement("span");
