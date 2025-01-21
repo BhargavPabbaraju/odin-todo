@@ -9,6 +9,11 @@ export class Project{
         this.todos = todos;
         this.id = uuidv4();
     }
+    static fromJSON(projectData){
+        const project =  new Project(projectData.name);
+        project.todos = projectData.todos.map((todoData)=> Todo.fromJSON(todoData));
+        return project;
+    }
 }
 
 Object.assign(Project.prototype,{
@@ -20,7 +25,7 @@ Object.assign(Project.prototype,{
     },
     deleteTodo(todoId){
         this.todos = this.todos.filter((todo)=> todo.id !== todoId);
-    }
+    },
 });
 
 export const defaultProjects = [

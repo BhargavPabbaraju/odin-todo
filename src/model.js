@@ -1,10 +1,12 @@
 import { defaultProjects, Project } from "./todos/project";
+import { Storage } from "./storage";
 export const model = {
     projects: defaultProjects,
     activeProject: null,
+    storage: Storage,
 
     getActiveProject(){
-        if(this.activeProject === null && this.projects.length > 0){
+        if((this.activeProject === null && this.projects.length > 0) || !this.projects.includes(this.activeProject)){
             this.setActiveProject(this.projects[0].id);
         }
         return this.activeProject;
@@ -48,6 +50,17 @@ export const model = {
         if(projectId === this.activeProject?.id){
             this.activeProject = this.projects.length > 0 ? this.projects[0] : null;
         }
+    },
+    loadProjects(){
+        const {projects,keyExists} = this.storage.loadProjects();
+        if(keyExists){
+            this.projects = projects.map((projectData)=> Project.fromJSON(projectData));
+            this.setActiveProject();
+        }else{
+            this.projects = defaultProjects;
+        }
+    },
+    saveProjects(){
+        this.storage.saveProjects(this.projects);
     }
-
 }

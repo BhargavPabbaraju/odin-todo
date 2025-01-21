@@ -18,6 +18,9 @@ export class Todo{
         this.expanded = false;
 
     }
+    static fromJSON(todoData){
+        return new Todo(todoData);
+    }
 }
 
 
@@ -27,5 +30,5 @@ Object.assign(Todo.prototype, {
     },
     toggleExpanded(){
         this.expanded = !this.expanded;
-    }
+    },
 });

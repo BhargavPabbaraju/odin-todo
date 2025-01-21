@@ -78,9 +78,19 @@ function refreshTodos(){
 }
 
 function refreshPage(){
-    console.log(model.getActiveProject());
     refreshProjects();
     refreshTodos();
 }
 
-refreshPage();
+
+function loadProjects(){
+    model.loadProjects();
+    refreshPage();
+}
+
+loadProjects();
+
+window.addEventListener("beforeunload",(e)=>{
+    e.preventDefault();
+    model.saveProjects();
+});
