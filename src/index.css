@@ -115,3 +115,6 @@ button:hover{
 .purple-icon{
     color: rebeccapurple;
 }
+.material-symbols-outlined:hover{
+    cursor: pointer;
+}

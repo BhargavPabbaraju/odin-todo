@@ -91,6 +91,5 @@ function loadProjects(){
 loadProjects();
 
 window.addEventListener("beforeunload",(e)=>{
-    e.preventDefault();
     model.saveProjects();
 });

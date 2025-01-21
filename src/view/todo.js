@@ -58,7 +58,9 @@ export function renderTodo(todo, onToggleComplete, onDeleteTodo, onToggleExpand,
         onToggleExpand(todo.id);
     });
     leftSide.appendChild(showIcon);
-
+    showIcon.setAttribute("aria-label","Show details");
+    showIcon.setAttribute("title","Show details");
+    
     const rightSide = document.createElement("div");
     const dueDate = document.createElement("span");
     dueDate.innerText = "Due " + format(todo.dueDate, "MMM dd yyyy");
@@ -66,13 +68,16 @@ export function renderTodo(todo, onToggleComplete, onDeleteTodo, onToggleExpand,
     const deleteIcon = icons.getTrashCan();
     deleteIcon.addEventListener("click",()=>{
         onDeleteTodo(todo.id);
-    })
+    });
+    deleteIcon.setAttribute("aria-label","Delete task");
+    deleteIcon.setAttribute("title","Delete task");
 
     rightSide.appendChild(dueDate);
     rightSide.appendChild(deleteIcon);
 
     if(todo.completed){
-        leftSide.classList.add("completed");
+        title.classList.add("completed");
+        chip.classList.add("completed");
         dueDate.classList.add("completed");
     }
 

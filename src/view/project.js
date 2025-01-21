@@ -13,6 +13,8 @@ function renderProject(project,isActive,onProjectChange,onDeleteProject){
     li.appendChild(title);
 
     const deleteIcon = icons.getTrashCan();
+    deleteIcon.setAttribute("aria-label","Delete project");
+    deleteIcon.setAttribute("title","Delete project");
     deleteIcon.addEventListener("click",()=>{
         onDeleteProject(project.id);
     });

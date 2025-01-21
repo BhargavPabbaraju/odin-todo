@@ -7,6 +7,8 @@ export class Todo{
                 dueDate = new Date(),
                 priority = Priority.UNASSIGNED,
                 notes = "",
+                completed=false,
+                expanded=false,
             }){
         this.id = uuidv4();
         this.title = title;
@@ -14,8 +16,8 @@ export class Todo{
         this.dueDate = dueDate || new Date();
         this.priority = priority;
         this.notes = notes;
-        this.completed = false;
-        this.expanded = false;
+        this.completed = completed;
+        this.expanded = expanded;
 
     }
     static fromJSON(todoData){
