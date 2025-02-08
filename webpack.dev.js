@@ -7,4 +7,7 @@ module.exports = merge(common, {
   devServer: {
     watchFiles: ["./src/template.html"],
   },
+  stats: {
+    loggingDebug: ["babel-loader"],
+  },
 });
